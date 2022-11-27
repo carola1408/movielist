@@ -146,3 +146,16 @@ function addToFavorite(id) {
   list.push(movie);
   localStorage.setItem("favoriteMovies", JSON.stringify(list));
 }
+// 渲染分頁
+function renderPaginator(amount) {
+  //計算總頁數
+  const numberOfPages = Math.ceil(amount / MOVIES_PER_PAGE);
+  //製作 template
+  let rawHTML = "";
+
+  for (let page = 1; page <= numberOfPages; page++) {
+    rawHTML += `<li class="page-item"><a class="page-link" href="#" data-page="${page}">${page}</a></li>`;
+  }
+  //放回 HTML
+  paginator.innerHTML = rawHTML;
+}
