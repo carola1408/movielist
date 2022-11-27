@@ -38,7 +38,25 @@
     </nav>
   </header>
   <!-- 製作容器 -->
-  <main class="container"></main>
+  <main class="container">
+    <section class="d-flex justify-content-between align-items-center">
+      <!-- Search Bar -->
+      <form class="row row-cols-lg-auto g-3 align-items-center mb-2" id="search-form">
+        <div class="col-12">
+          <label class="visually-hidden" for="search-input">
+            Search Keyword
+          </label>
+          <input type="text" class="form-control" id="search-input" placeholder="搜索電影名稱" />
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary" id="search-submit-button">
+            搜索
+          </button>
+        </div>
+      </form>
+    </section>
+
+  </main>
   <!-- 引用axios -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <!-- 載入 Bootstrap 的 JavaScript 函式庫 -->
