@@ -121,3 +121,18 @@ searchForm.addEventListener("submit", function onSearchFormSubmitted(event) {
 
   savePage = 1
 });
+//發送 Request彈跳視窗
+function showMovieModal(id) {
+  const modalTitle = document.querySelector("#movie-modal-title");
+  const modalImage = document.querySelector("#movie-modal-image");
+  const modalDate = document.querySelector("#movie-modal-date");
+  const modalDescription = document.querySelector("#movie-modal-description");
+  axios.get(INDEX_URL + id).then((response) => {
+    const data = response.data.results;
+    modalTitle.innerText = data.title;
+    modalDate.innerText = "Release date: " + data.release_date;
+    modalDescription.innerText = data.description;
+    modalImage.innerHTML = `<img src="${POSTER_URL + data.image
+      }" alt="movie-poster" class="img-fluid">`;
+  });
+}
