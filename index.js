@@ -75,3 +75,11 @@ function renderBarList(data) {
   })
   dataPanel.innerHTML = rawHTML
 }
+// 監聽 data panel 確認點擊是 more還是+,並回傳對應data-id
+dataPanel.addEventListener("click", function onPanelClicked(event) {
+  if (event.target.matches(".btn-show-movie")) {
+    showMovieModal(Number(event.target.dataset.id))
+  } else if (event.target.matches(".btn-add-favorite")) {
+    addToFavorite(Number(event.target.dataset.id))
+  }
+})
