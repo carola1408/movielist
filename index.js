@@ -83,3 +83,13 @@ dataPanel.addEventListener("click", function onPanelClicked(event) {
     addToFavorite(Number(event.target.dataset.id))
   }
 })
+//新增切換card與bar模式
+const cardStyle = document.querySelector(".card-style")
+const listStyle = document.querySelector(".list-style")
+cardStyle.addEventListener("click", function onCardStyleClicked(event) {
+  pageMode = "card"
+  renderCardList(getMoviesByPage(savePage))
+})
+listStyle.addEventListener("click", function onListStyleClicked(event) {
+  renderBarList(getMoviesByPage(savePage))
+})
