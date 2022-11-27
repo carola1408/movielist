@@ -28,7 +28,7 @@ axios
     renderCardList(getMoviesByPage(1))
   })
   .catch((err) => console.log(err))
-  // 渲染電影清單 renderMovieList
+// 渲染電影清單 renderMovieList
 //新增更改card樣式
 function renderCardList(data) {
   let rawHTML = ""
@@ -93,3 +93,31 @@ cardStyle.addEventListener("click", function onCardStyleClicked(event) {
 listStyle.addEventListener("click", function onListStyleClicked(event) {
   renderBarList(getMoviesByPage(savePage))
 })
+//監聽表單提交事件
+searchForm.addEventListener("submit", function onSearchFormSubmitted(event) {
+  //取消預設事件
+  event.preventDefault();
+  //取得搜尋關鍵字
+  const keyword = searchInput.value.trim().toLowerCase();
+
+  //錯誤處理：輸入無效字串
+  filteredMovies = movies.filter((movie) =>
+    movie.title.toLowerCase().includes(keyword)
+  );
+  //條件篩選
+  if (filteredMovies.length === 0) {
+    return alert("請輸入有效字串！");
+  }
+  //新增切換card與bar模式
+  if (pageMode === "card") {
+    renderCardList(getMoviesByPage(1))
+    //重製分頁器
+    renderPaginator(filteredMovies.length)
+  } else {
+    renderBarList(getMoviesByPage(1))
+    //重製分頁器
+    renderPaginator(filteredMovies.length)
+  }
+
+  savePage = 1
+});
