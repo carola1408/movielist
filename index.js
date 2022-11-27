@@ -159,3 +159,11 @@ function renderPaginator(amount) {
   //放回 HTML
   paginator.innerHTML = rawHTML;
 }
+//取出特定頁面的資料,如果搜尋清單有東西，就取搜尋清單 filteredMovies，否則就還是取總清單 movies
+function getMoviesByPage(page) {
+  const data = filteredMovies.length ? filteredMovies : movies;
+  //計算起始 index
+  const startIndex = (page - 1) * MOVIES_PER_PAGE;
+  //回傳切割後的新陣列
+  return data.slice(startIndex, startIndex + MOVIES_PER_PAGE);
+}
