@@ -167,3 +167,17 @@ function getMoviesByPage(page) {
   //回傳切割後的新陣列
   return data.slice(startIndex, startIndex + MOVIES_PER_PAGE);
 }
+//新增 Pagination 標籤的事件監聽器
+paginator.addEventListener("click", function onPaginatorClicked(event) {
+  //透過 dataset 取得被點擊的頁數
+  const clickPage = Number(event.target.dataset.page)
+  //如果被點擊的不是 a 標籤，結束
+  if (event.target.tagName !== "A") return;
+  savePage = clickPage
+  if (pageMode === "card") {
+    renderCardList(getMoviesByPage(clickPage))
+  } else {
+    renderBarList(getMoviesByPage(clickPage))
+  }
+
+})
